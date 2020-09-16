@@ -1,6 +1,7 @@
 # Elastic Weight Consolidation 
 
-This is a Python implementation of the EWC algorithm as proposed by Kirkpatrick et al, 2017  
+This is a Python implementation of the EWC algorithm as proposed by Kirkpatrick et al, 2017      
+Loosely inspired by Ari Seff's implementation for learning purposes.
 
 ## Evaluation
 Below a performance comparison between networks trained either with pure SGD or additionally with EWC, evaluated on two permuted mnist tasks. 
