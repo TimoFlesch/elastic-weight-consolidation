@@ -27,7 +27,7 @@ WEIGHT_INIT = 1e-2
 N_ITERS = int(1e4)
 
 SGD_LRATE = 1e-1
-RUN_EWC = False
+RUN_EWC = True
 EWC_LAM = 15
 N_FIM_SAMPLES = 500
 MINIBATCH_SIZE = 250
@@ -89,9 +89,10 @@ class Nnet(object):
         
     def set_loss_funct(self,run_ewc=False):
         if run_ewc==True:
-            self.ewc_loss = self.compute_ewc_loss()            
-            print('hooray')
-            self.train_step = tf.train.GradientDescentOptimizer(SGD_LRATE).minimize(self.ewc_loss)
+            if not hasattr(self,'ewc_loss'):
+                self.ewc_loss = self.compute_ewc_loss()            
+                print('hooray')
+                self.train_step = tf.train.GradientDescentOptimizer(SGD_LRATE).minimize(self.ewc_loss)
         else:            
             self.train_step = tf.train.GradientDescentOptimizer(SGD_LRATE).minimize(self.cross_entropy)
         
@@ -110,6 +111,7 @@ class Nnet(object):
         '''
             compute ewc regulariser 
         '''
+
         loss = self.cross_entropy
         for ii in range(len(self.thetas)):
             loss += (EWC_LAM/2) * tf.reduce_sum(tf.multiply(self.FIM[ii].astype(np.float32),(self.thetas[ii] - self.old_thetas[ii])**2))
