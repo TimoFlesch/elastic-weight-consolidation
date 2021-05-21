@@ -4,9 +4,9 @@ Timo Flesch, 2021
 '''
 import os 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-from model import Nnet
-from trainer import train_nnet
-from visualise import disp_results
+from ewc_lib.model import Nnet
+from ewc_lib.trainer import train_nnet
+from ewc_lib.visualise import disp_results
 
 
 # ----------------------------------------------------------------------------------------

@@ -2,8 +2,10 @@ import numpy as np
 import os 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf 
-from data import load_mnist_data, permute_mnist
-from model import Nnet
+from ewc_lib.data import load_mnist_data, permute_mnist
+from ewc_lib.model import Nnet
+
+
 def train_nnet(params):
     '''
     trains neural network 
@@ -17,7 +19,10 @@ def train_nnet(params):
     dataset1 = load_mnist_data()
     # now create permuted mnist 
     dataset2 = permute_mnist(dataset1)
-    with tf.Session() as sess:
+    config = tf.ConfigProto()
+    config.gpu_options.allow_growth=True
+
+    with tf.Session(config=config) as sess:
         # initialise neural network 
         nnet = Nnet(sess,n_inputs=params['n_inputs'],
                             n_classes=params['n_classes'],
