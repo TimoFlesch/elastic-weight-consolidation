@@ -1,4 +1,3 @@
-from OrthogonalWeightModification.auxiliar.data import gen_splitMNIST
 import numpy as np
 import os 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
@@ -28,12 +27,15 @@ def train_nnet(params):
     }
     if params['task']=='permutedMNIST':
         # load dataset 
-        dataset1 = load_mnist_data()
+        mnist = load_mnist_data()
+        dataset1 = permute_mnist(mnist)
         # now create permuted mnist 
-        dataset2 = permute_mnist(dataset1)
+        dataset2 = permute_mnist(mnist)
+
     elif params['task']=='splitMNIST':
         dataset1 = gen_splitMNIST([0,4])
         dataset2 = gen_splitMNIST([5,9])
+    
     elif params['task']=='magnitudeParity':
         pass
 
