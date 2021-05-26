@@ -31,6 +31,8 @@ params['mbatch_size'] = 250
 params['disp_n_steps'] = 100
 params['verbose'] = True
 
+params['task'] = 'permutedMNIST' # permutedMNIST or splitMNIST or MagnitudeParity
+
 
 # ----------------------------------------------------------------------------------------
 # main experiment
