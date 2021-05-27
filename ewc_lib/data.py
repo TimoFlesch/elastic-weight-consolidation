@@ -14,7 +14,7 @@ def load_mnist_data():
 
 def permute_mnist(mnist):
     '''
-    return a new mnist dataset w/ pixels randomly permuted (found this funct in Ari Seff's github)
+    return a new mnist dataset w/ pixels randomly permuted
     '''
     perm_inds = np.arange(mnist.train.images.shape[1])
     np.random.shuffle(perm_inds)

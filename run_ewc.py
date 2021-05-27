@@ -31,8 +31,13 @@ params['mbatch_size'] = 250
 params['disp_n_steps'] = 100
 params['verbose'] = True
 
-params['task'] = 'permutedMNIST' # permutedMNIST or splitMNIST or MagnitudeParity
+params['task'] = 'permutedMNIST' # permutedMNIST or splitMNIST 
 
+
+params['device'] = 'CPU'
+
+if params['device']=='CPU':
+    os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
 # ----------------------------------------------------------------------------------------
 # main experiment

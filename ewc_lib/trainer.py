@@ -35,9 +35,7 @@ def train_nnet(params):
     elif params['task']=='splitMNIST':
         dataset1 = gen_splitMNIST([0,4])
         dataset2 = gen_splitMNIST([5,9])
-    
-    elif params['task']=='magnitudeParity':
-        pass
+       
 
 
     config = tf.ConfigProto()
