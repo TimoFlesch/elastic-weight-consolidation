@@ -35,6 +35,8 @@ params['mbatch_size'] = 250 # minibatch size
 
 params['disp_n_steps'] = 100 # display progress every n steps
 params['verbose'] = True # print some training data to stdout
+params['task'] = 'permutedMNIST' # which continual learning problem to tackle. supports 'permutedMNIST' and 'splitMNIST'
+params['device'] = 'CPU' # use CPU, or alternatively GPU if you have a fast video card that supports CUDA.
 
 ```
 
