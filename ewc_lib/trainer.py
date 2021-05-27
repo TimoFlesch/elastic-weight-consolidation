@@ -2,7 +2,7 @@ import numpy as np
 import os 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf 
-from ewc_lib.data import load_mnist_data, permute_mnist
+from ewc_lib.data import load_mnist_data, permute_mnist, gen_splitMNIST
 from ewc_lib.model import Nnet
 
 
@@ -25,10 +25,18 @@ def train_nnet(params):
         'acc1': [],
         'acc2': []
     }
-    # load dataset 
-    dataset1 = load_mnist_data()
-    # now create permuted mnist 
-    dataset2 = permute_mnist(dataset1)
+    if params['task']=='permutedMNIST':
+        # load dataset 
+        mnist = load_mnist_data()
+        dataset1 = permute_mnist(mnist)
+        # now create permuted mnist 
+        dataset2 = permute_mnist(mnist)
+
+    elif params['task']=='splitMNIST':
+        dataset1 = gen_splitMNIST([0,4])
+        dataset2 = gen_splitMNIST([5,9])
+       
+
 
     config = tf.ConfigProto()
     config.gpu_options.allow_growth=True

@@ -18,19 +18,26 @@ params = {}
 params['n_inputs'] = 784
 params['n_classes'] = 10
 params['n_hidden'] = 100
-params['weight_init'] = 1e-2
+params['weight_init'] = 1e-5
 
-params['n_iters'] = int(1e4)
+params['n_iters'] = 5000
 
 params['lrate'] = 1e-1
 params['do_ewc'] = True
 params['ewc_lambda'] = 15
-params['fim_samples'] = 500
+params['fim_samples'] = 1000
 params['mbatch_size'] = 250
 
 params['disp_n_steps'] = 100
 params['verbose'] = True
 
+params['task'] = 'permutedMNIST' # permutedMNIST or splitMNIST 
+
+
+params['device'] = 'CPU'
+
+if params['device']=='CPU':
+    os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
 # ----------------------------------------------------------------------------------------
 # main experiment
